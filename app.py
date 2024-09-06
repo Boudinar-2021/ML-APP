@@ -1,25 +1,24 @@
 import base64
+import io
+
+import pandas as pd
+import streamlit as st
+import matplotlib.pyplot as plt
+import seaborn as sns
+
 from sklearn.calibration import LabelEncoder
 from sklearn.impute import SimpleImputer
 from sklearn.multiclass import OneVsOneClassifier, OneVsRestClassifier
 from sklearn.preprocessing import MinMaxScaler, PolynomialFeatures
-import streamlit as st
-
-import streamlit as st
-import pandas as pd
 from sklearn.model_selection import train_test_split
-import matplotlib.pyplot as plt
-import seaborn as sns
-import base64
 from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor
 from sklearn.tree import DecisionTreeClassifier, DecisionTreeRegressor
 from sklearn.svm import SVC, SVR
 from sklearn.neighbors import KNeighborsClassifier, KNeighborsRegressor
+from sklearn.metrics import classification_report, r2_score, mean_squared_error
+
 from imblearn.over_sampling import SMOTE
-from sklearn.metrics import classification_report
-from imblearn.over_sampling import SMOTE
-from sklearn.metrics import classification_report,  r2_score ,mean_squared_error,root_mean_squared_error
-import io
+
 
 
 def file_to_df(file):
