@@ -25,9 +25,7 @@ import io
 def file_to_df(file):
     name = file.name
     extension = name.split(".")[-1]
-    # name = "fatima.csv"
-    # extension = name.split(".")[-1]
-    # name.split(".") ==> ["fatima", "csv"] ==> "csv"
+
 
     if extension == "csv":
         df = pd.read_csv(file)
@@ -216,7 +214,7 @@ st.write("""
 # Machine Learning Prediction App""")
 
 
-with st.sidebar.header('1. Upload your CSV data'):
+with st.sidebar.header('1. Upload your data'):
     uploaded_file = st.sidebar.file_uploader("Please Upload the data", type=["csv","tsv","xlsx","json","xml"])
 
     
