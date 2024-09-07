@@ -15,7 +15,7 @@ from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor
 from sklearn.tree import DecisionTreeClassifier, DecisionTreeRegressor
 from sklearn.svm import SVC, SVR
 from sklearn.neighbors import KNeighborsClassifier, KNeighborsRegressor
-from sklearn.metrics import classification_report, r2_score, mean_squared_error
+from sklearn.metrics import classification_report, r2_score, mean_squared_error , root_mean_squared_error
 
 from imblearn.over_sampling import SMOTE
 
