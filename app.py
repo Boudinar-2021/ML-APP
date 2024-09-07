@@ -44,7 +44,7 @@ def corr_matrix(df):
     plt.figure(figsize=(16, 8))
     sns.heatmap(corr_matrix, annot=True, cmap='coolwarm')
     st.pyplot(plt)
-    st.markdown(imagedownload(plt, 'correlation_matrix.pdf'), unsafe_allow_html=True)
+    st.markdown(imagedownload(plt, 'correlation_matrix.png'), unsafe_allow_html=True)
 
 
 def determine_task_type(df, target_column):
@@ -200,7 +200,7 @@ def filedownload(df, filename):
 
 def imagedownload(plt, filename):
     s = io.BytesIO()
-    plt.savefig(s, format='pdf', bbox_inches='tight')
+    plt.savefig(s, format='pmg', bbox_inches='tight')
     plt.close()
     b64 = base64.b64encode(s.getvalue()).decode()  # strings <-> bytes conversions
     href = f'<a href="data:image/png;base64,{b64}" download={filename}>Download {filename} File</a>'
