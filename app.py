@@ -147,7 +147,7 @@ def build_model(df, target_column, split_size, seed_number):
             model = OneVsRestClassifier(base_model)
         elif ov == 'Compare One-Vs-One (OVO)':
             model = OneVsOneClassifier(base_model)
-        else:
+        else ov == 'None':
             model = base_model
 
     elif task == 'Regression':
@@ -269,8 +269,8 @@ with st.sidebar.header('4. Additional techniques: '):
     dataAugmentation = st.sidebar.checkbox('Data Augmentation')
 
     if task == 'Classification':
-        ov = st.sidebar.radio('',
-    ('Compare One-Vs-Rest (OVR)', 'Compare One-Vs-One (OVO)'),
+        ov = st.sidebar.radio('Comparaison Multi Class Classification',
+    ('None' , 'Compare One-Vs-Rest (OVR)', 'Compare One-Vs-One (OVO)'),
 )
 
         # ovr = st.sidebar.checkbox('Compare One-Vs-Rest (OVR)')
