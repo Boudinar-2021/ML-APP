@@ -112,6 +112,8 @@ def build_model(df, target_column, split_size, seed_number):
 
     X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=(100 - split_size) / 100, random_state=seed_number)
     
+    inferred_task = determine_task_type(df,target_column=target_column)
+
     if polynomialFeatures:
         if df.isnull().sum().sum() > 0:
             st.warning("Polynomial Features cannot be applied due to missing values.")
@@ -120,7 +122,7 @@ def build_model(df, target_column, split_size, seed_number):
             X_train = poly.fit_transform(X_train)
             X_test = poly.transform(X_test)
 
-    if dataAugmentation and task == 'Classification':
+    if dataAugmentation and task == 'Classification' and inferred_task == 'Classification':
         if df.isnull().sum().sum() > 0:
             st.warning("Data Augmentation cannot be applied due to missing values.")
         else:
@@ -158,7 +160,6 @@ def build_model(df, target_column, split_size, seed_number):
         elif algorithm == 'Decision Tree':
             model = DecisionTreeRegressor(random_state=seed_number)
 
-    inferred_task = determine_task_type(df,target_column=target_column)
     if algorithm in ['SVM', 'KNN']:
         if df.isnull().values.any() and not fillMissingVlaues:
             st.warning(f"The selected algorithm '{algorithm}' does not support missing values. Please enable the 'Fill the missing values' option to proceed.")
