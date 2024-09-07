@@ -143,9 +143,9 @@ def build_model(df, target_column, split_size, seed_number):
         elif algorithm == 'Decision Tree':
             base_model = DecisionTreeClassifier(random_state=seed_number)
 
-        if ovr:
+        if ov == 'Compare One-Vs-Rest (OVR)':
             model = OneVsRestClassifier(base_model)
-        elif ovo:
+        elif ov == 'Compare One-Vs-One (OVO)':
             model = OneVsOneClassifier(base_model)
         else:
             model = base_model
@@ -269,8 +269,12 @@ with st.sidebar.header('4. Additional techniques: '):
     dataAugmentation = st.sidebar.checkbox('Data Augmentation')
 
     if task == 'Classification':
-        ovr = st.sidebar.checkbox('Compare One-Vs-Rest (OVR)')
-        ovo = st.sidebar.checkbox('Compare One-Vs-One (OVO)')
+        ov = st.sidebar.radio('',
+    ('Compare One-Vs-Rest (OVR)', 'Compare One-Vs-One (OVO)'),
+)
+
+        # ovr = st.sidebar.checkbox('Compare One-Vs-Rest (OVR)')
+        # ovo = st.sidebar.checkbox('Compare One-Vs-One (OVO)')
     else:
         ovr = ovo = False
 
