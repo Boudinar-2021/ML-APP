@@ -106,8 +106,7 @@ def build_model(df, target_column, split_size, seed_number):
     st.write(df.describe())
 
     st.markdown('**1.5. Correlation Matrix**:')
-    if not polynomialFeatures:
-        corr_matrix(df)
+    corr_matrix(df)
     
 
 
